@@ -9,7 +9,7 @@ const port = 8000;
 
 
 // Define mongoose schema
-var contactSchema = new mongoose.Schema({
+let contactSchema = new mongoose.Schema({
     name: String,
     phone: String,
     email: String,
@@ -17,7 +17,7 @@ var contactSchema = new mongoose.Schema({
     desc: String
   });
 
-var Contact = mongoose.model('Contact', contactSchema);
+let Contact = mongoose.model('Contact', contactSchema);
 
 // EXPRESS SPECIFIC STUFF
 app.use('/static', express.static('static')) // For serving static files
@@ -40,7 +40,7 @@ app.get('/contact', (req, res)=>{
 
 
 app.post('/contact', (req, res)=>{ 
-    var myData = new Contact(req.body);
+    let myData = new Contact(req.body);
     myData.save().then(()=>{
         res.send("This item has been saved to the database")
     }).catch(()=>{
